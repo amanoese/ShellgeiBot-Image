@@ -130,7 +130,8 @@ FROM base AS general-builder
 RUN --mount=type=bind,target=/var/lib/apt/lists,from=apt-cache,source=/var/lib/apt/lists \
     --mount=type=cache,target=/var/cache/apt,sharing=private \
     apt-get install -y -qq file jq libmecab-dev mecab
-    ##apt-get install -y -qq file jq lib32ncursesw5-dev libmecab-dev mecab
+## TODO
+##    apt-get install -y -qq file jq lib32ncursesw5-dev libmecab-dev mecab
 
 WORKDIR /downloads
 # Open-usp-Tukubai
@@ -256,6 +257,11 @@ RUN curl -sfSL --retry 5 https://raw.githubusercontent.com/msr-i386/horizon/mast
 # opy
 RUN curl -sfSL --retry 5 https://raw.githubusercontent.com/ryuichiueda/opy/master/opy -o /usr/local/bin/opy \
     && chmod u+x /usr/local/bin/opy
+
+## TODO
+## # base85
+## RUN curl -sfSL --retry 5 https://github.com/redpeacock78/base85/releases/download/v0.0.11/base85-linux-x86 -o /usr/local/bin/base85 \
+##     && chmod u+x /usr/local/bin/base85
 
 # apt
 RUN --mount=type=bind,target=/var/lib/apt/lists,from=apt-cache,source=/var/lib/apt/lists \
